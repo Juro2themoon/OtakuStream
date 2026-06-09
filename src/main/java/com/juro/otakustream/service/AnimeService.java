@@ -1,6 +1,7 @@
 package com.juro.otakustream.service;
 
 import com.juro.otakustream.entity.Anime;
+import com.juro.otakustream.exception.AnimeNotFoundException;
 import com.juro.otakustream.repository.AnimeRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,8 @@ public class AnimeService {
 
     public Anime getAnimeById(Long id) {
         return animeRepository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() ->
+                        new AnimeNotFoundException("Anime with id " + id + " not found"));
     }
 
     public Anime createAnime(Anime anime) {

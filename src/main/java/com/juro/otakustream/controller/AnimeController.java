@@ -3,6 +3,7 @@ package com.juro.otakustream.controller;
 import com.juro.otakustream.entity.Anime;
 import com.juro.otakustream.repository.AnimeRepository;
 import com.juro.otakustream.service.AnimeService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,12 +29,12 @@ public class AnimeController {
    }
 
    @PostMapping
-    public Anime createAnime(@RequestBody Anime anime) {
+    public Anime createAnime(@Valid @RequestBody Anime anime) {
         return animeService.createAnime(anime);
    }
 
    @PutMapping("/{id}")
-    public Anime updateAnime(@PathVariable Long id, @RequestBody Anime anime) {
+    public Anime updateAnime(@Valid @PathVariable Long id, @RequestBody Anime anime) {
         return animeService.updateAnime(id, anime);
    }
 
