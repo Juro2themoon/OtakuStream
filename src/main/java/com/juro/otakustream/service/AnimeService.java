@@ -43,4 +43,8 @@ public class AnimeService {
                 .orElseThrow();
         animeRepository.delete(anime);
     }
+
+    public List<Anime> searchAnimeByTitle(String title) {
+        return animeRepository.findByTitleContainingIgnoreCase(title);
+    }
 }

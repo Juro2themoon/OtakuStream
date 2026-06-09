@@ -42,4 +42,8 @@ public class AnimeController {
         animeService.deleteAnime(id);
     }
 
+    @GetMapping("/search")
+    public List<Anime> searchAnime(@RequestParam String title) {
+        return animeService.searchAnimeByTitle(title);
+    }
 }
