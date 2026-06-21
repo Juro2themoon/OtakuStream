@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "anime")
 public class Anime {
@@ -28,7 +30,8 @@ public class Anime {
     @Min(1)
     @Getter
     @Setter
-    private Integer episodes;
+    @OneToMany(mappedBy ="anime")
+    private List<Episode> episodes;
 
     @Setter
     @Getter
